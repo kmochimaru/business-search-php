@@ -1,5 +1,5 @@
 <?php
-  require("../db_connection.php");
+  require_once("../db_connection.php");
 
   class CategoryDAO
   {
@@ -53,6 +53,15 @@
          $query->bindParam("category_img", $category_img, PDO::PARAM_STR);
          $result = $query->execute();
          return $result;
+      }
+
+      public function findByProvince($province_id)
+      {
+          $query = $this->db->prepare("SELECT * FROM category WHERE province_id = :province_id");
+          $query->bindParam("province_id", $province_id, PDO::PARAM_INT);
+          $query->execute();
+          $results = $query->fetchAll(PDO::FETCH_ASSOC);
+          return $results;
       }
 
       public function detail($category_id)

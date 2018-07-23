@@ -20,5 +20,13 @@
       return $results;
     }
 
+    public function detail($province_id){
+      $query = $this->db->prepare("SELECT * FROM province WHERE province_id = :province_id");
+      $query->bindParam("province_id", $province_id, PDO::PARAM_INT);
+      $query->execute();
+      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    }
+
   }
  ?>

@@ -1,5 +1,5 @@
 <?php
-  require("../db_connection.php");
+  require_once("../db_connection.php");
 
   class ResultDAO
   {
@@ -54,6 +54,15 @@
           $query->bindParam("result_id", $result_id, PDO::PARAM_INT);
           $query->execute();
           return $query->fetch(PDO::FETCH_ASSOC);
+      }
+
+      public function findByCategory($category_id)
+      {
+          $query = $this->db->prepare("SELECT * FROM result WHERE category_id = :category_id");
+          $query->bindParam("category_id", $category_id, PDO::PARAM_INT);
+          $query->execute();
+          $results = $query->fetchAll(PDO::FETCH_ASSOC);
+          return $results;
       }
 
       public function delete($result_id)
