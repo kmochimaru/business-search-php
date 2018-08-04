@@ -3,7 +3,7 @@
   header("Access-Control-Allow-Headers: *");
   header("Content-Type: text/html;charset: utf-8");
 
-  // define("HOST", "localhost");
+  define("HOST", "localhost");
   // define("USER", "chiangr1");
   // define("PASSWORD", "!Kenjung288");
   // define("DATABASE", "chiangr1_bs");
