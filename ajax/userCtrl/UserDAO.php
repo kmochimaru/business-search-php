@@ -1,5 +1,5 @@
 <?php
-  require("../db_connection.php");
+  require_once("../db_connection.php");
 
   class UserDAO
   {
@@ -73,6 +73,6 @@
           $query->bindParam("email", $email, PDO::PARAM_STR);
           $query->bindParam("password", $password, PDO::PARAM_STR);
           $query->execute();
-          return $query->fetch(PDO::FETCH_ASSOC);
+          return $query->rowCount();
       }
   }
