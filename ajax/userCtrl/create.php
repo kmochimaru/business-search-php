@@ -11,6 +11,11 @@
       $created_at = $obj->created_at;
       $updated_at = $obj->updated_at;
       $dao = new UserDAO();
-      $result = $dao->create($firstname, $lastname, $role, $email, md5($password), $created_at, $updated_at);
-      echo $result;
+      try{
+        $result = $dao->create($firstname, $lastname, $role, $email, md5($password), $created_at, $updated_at);
+        echo $result;
+      }catch(Exception $exception) {
+        echo json_encode($exception);
+      }
+
   }

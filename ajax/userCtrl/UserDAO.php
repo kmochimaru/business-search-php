@@ -59,6 +59,14 @@
           return $query->fetch(PDO::FETCH_ASSOC);
       }
 
+      public function getByEmail($email)
+      {
+        $query = $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $query->bindParam("email", $email, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+      }
+
       public function delete($id)
       {
           $query = $this->db->prepare("DELETE FROM users WHERE id = :id");
